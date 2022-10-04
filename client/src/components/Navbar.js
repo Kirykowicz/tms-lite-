@@ -16,13 +16,15 @@ function NavBar() {
           </LinkContainer>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link eventKey="link-2">Carriers</Nav.Link>
+          <LinkContainer to="carriers">
+            <Nav.Link>Carriers</Nav.Link>
+          </LinkContainer>
         </Nav.Item>
         <Nav.Item>
           <Nav.Link eventKey="link-2">New Load</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link eventKey="link-2">New Site</Nav.Link>
+          <Nav.Link eventKey="link-2">Sites</Nav.Link>
         </Nav.Item>
         <Nav.Item>
           <Nav.Link eventKey="link-2">Load History</Nav.Link>

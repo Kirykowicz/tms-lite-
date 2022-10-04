@@ -2,6 +2,7 @@ import NavBar from "./components/Navbar";
 import LoadBoard from "./components/LoadBoard";
 import { Route, Routes } from "react-router-dom";
 import Customers from "./components/Customers";
+import Carriers from "./components/Carriers";
 
 function App() {
   return (
@@ -11,7 +12,10 @@ function App() {
         <Route exact path="/" element={<LoadBoard />} />
       </Routes>
       <Routes>
-        <Route exact path="/customers" element={<Customers />} />
+        <Route path="/customers" element={<Customers />} />
+      </Routes>
+      <Routes>
+        <Route path="/carriers" element={<Carriers />} />
       </Routes>
     </>
   );
