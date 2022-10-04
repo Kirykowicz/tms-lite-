@@ -5,8 +5,17 @@ import Col from "react-bootstrap/Col";
 import Accordion from "react-bootstrap/Accordion";
 import ListGroup from "react-bootstrap/ListGroup";
 import Table from "react-bootstrap/Table";
+import { useState, useEffect } from "react";
 
 function LoadBoard() {
+  const [loads, setLoads] = useState([]);
+
+  useEffect(() => {
+    fetch("/loads")
+      .then((res) => res.json())
+      .then((res) => setLoads(res));
+  }, []);
+
   return (
     <>
       <Container>
@@ -23,22 +32,28 @@ function LoadBoard() {
               <th>Revenue</th>
               <th>Cost</th>
               <th>Margin</th>
+              <th>Equipment</th>
             </tr>
           </thead>
 
           <tbody>
-            <tr>
-              <td>143678</td>
-              <td>Good2Grow</td>
-              <td>Monson & Sons</td>
-              <td>Chicago</td>
-              <td>IL</td>
-              <td>Minong</td>
-              <td>WI</td>
-              <td>$1,700</td>
-              <td>$1,200</td>
-              <td>$500</td>
-            </tr>
+            {loads.map((load) => {
+              return (
+                <tr>
+                  <td>{load.id}</td>
+                  <td>{load.customer_name}</td>
+                  <td>{load.carrier_name}</td>
+                  <td>{load.stops[0].city}</td>
+                  <td>{load.stops[0].state}</td>
+                  <td>{load.stops[1].city}</td>
+                  <td>{load.stops[1].state}</td>
+                  <td>${load.revenue}</td>
+                  <td>${load.cost}</td>
+                  <td>{load.total}</td>
+                  <td>{load.equipment_type}</td>
+                </tr>
+              );
+            })}
           </tbody>
         </Table>
       </Container>
