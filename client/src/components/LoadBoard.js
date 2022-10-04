@@ -23,7 +23,6 @@ function LoadBoard() {
               <th>Revenue</th>
               <th>Cost</th>
               <th>Margin</th>
-              <th>Status</th>
             </tr>
           </thead>
 
@@ -39,7 +38,6 @@ function LoadBoard() {
               <td>$1,700</td>
               <td>$1,200</td>
               <td>$500</td>
-              <td>In Transit</td>
             </tr>
           </tbody>
         </Table>
