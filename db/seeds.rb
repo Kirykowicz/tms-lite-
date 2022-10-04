@@ -3,6 +3,7 @@ Customer.destroy_all
 Carrier.destroy_all
 Load.destroy_all
 Stop.destroy_all
+Site.destroy_all
 
 puts 'seeding customers'
 cu1 = Customer.create(name: 'Aldi', address: '1200 N Kirk Rd, Batavia, IL 60510')
@@ -25,6 +26,7 @@ puts 'seeding sites'
 
 puts 'seeding loads'
 l1 = Load.create(customer_id: cu1.id, carrier_id: ca1.id, revenue: 1000, cost: 800, equipment_type: "Van")
+l2 = Load.create(customer_id: cu2.id, carrier_id: ca2.id, revenue: 2000, cost: 1100)
 puts 'finished seeding loads'
 
 puts 'seeding stops'

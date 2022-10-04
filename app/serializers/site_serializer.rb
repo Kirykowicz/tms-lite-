@@ -1,3 +1,3 @@
 class SiteSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :name, :city, :address, :state
 end

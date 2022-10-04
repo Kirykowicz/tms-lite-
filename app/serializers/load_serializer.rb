@@ -11,6 +11,8 @@ class LoadSerializer < ActiveModel::Serializer
   end
 
   def total 
+    if object.revenue && object.cost 
     object.revenue - object.cost 
+    end
   end
 end

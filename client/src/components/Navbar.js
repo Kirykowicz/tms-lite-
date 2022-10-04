@@ -21,7 +21,9 @@ function NavBar() {
           </LinkContainer>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link eventKey="link-2">New Load</Nav.Link>
+          <LinkContainer to="new_load">
+            <Nav.Link>New Load</Nav.Link>
+          </LinkContainer>
         </Nav.Item>
         <Nav.Item>
           <Nav.Link eventKey="link-2">Sites</Nav.Link>
