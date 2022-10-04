@@ -1,13 +1,18 @@
-import "./App.css";
-
 import NavBar from "./components/Navbar";
 import LoadBoard from "./components/LoadBoard";
+import { Route, Routes } from "react-router-dom";
+import Customers from "./components/Customers";
 
 function App() {
   return (
     <>
       <NavBar />
-      <LoadBoard />
+      <Routes>
+        <Route exact path="/" element={<LoadBoard />} />
+      </Routes>
+      <Routes>
+        <Route exact path="/customers" element={<Customers />} />
+      </Routes>
     </>
   );
 }

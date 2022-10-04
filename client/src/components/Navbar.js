@@ -1,14 +1,19 @@
 import Nav from "react-bootstrap/Nav";
+import { LinkContainer } from "react-router-bootstrap";
 
 function NavBar() {
   return (
     <>
       <Nav className="justify-content-center" activeKey="/home">
         <Nav.Item>
-          <Nav.Link href="/home">Load Board</Nav.Link>
+          <LinkContainer to="/">
+            <Nav.Link>Load Board</Nav.Link>
+          </LinkContainer>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link eventKey="link-1">Customers</Nav.Link>
+          <LinkContainer to="customers">
+            <Nav.Link>Customers</Nav.Link>
+          </LinkContainer>
         </Nav.Item>
         <Nav.Item>
           <Nav.Link eventKey="link-2">Carriers</Nav.Link>
