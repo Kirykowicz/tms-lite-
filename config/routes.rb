@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  resources :sites
-  resources :stops
   resources :loads
   resources :carriers
   resources :customers
