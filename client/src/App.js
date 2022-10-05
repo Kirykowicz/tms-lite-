@@ -5,15 +5,23 @@ import Customers from "./components/Customers";
 import Carriers from "./components/Carriers";
 import NewLoad from "./components/NewLoad";
 import { useState, useEffect } from "react";
-import LoginForm from "./components/LoginForm";
-import SignUpForm from "./components/SignUpForm";
 import Login from "./Login";
 
 function App() {
   const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    // auto-login
+    fetch("/me").then((r) => {
+      if (r.ok) {
+        r.json().then((user) => setUser(user));
+      }
+    });
+  }, []);
+  if (!user) return <Login onLogin={setUser} />;
   return (
     <>
-      <NavBar />
+      <NavBar user={user} setUser={setUser} />
       <Routes>
         <Route exact path="/" element={<LoadBoard />} />
       </Routes>
@@ -26,7 +34,6 @@ function App() {
       <Routes>
         <Route path="/new_load" element={<NewLoad />} />
       </Routes>
-      <Login />
     </>
   );
 }

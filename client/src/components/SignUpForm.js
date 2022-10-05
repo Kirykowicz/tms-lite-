@@ -53,7 +53,7 @@ export default function SignUpForm({ onLogin }) {
           </Form.Group>
 
           <Button variant="primary" type="submit">
-            Sign In
+            Sign on Up
           </Button>
         </Form>
       </Container>
