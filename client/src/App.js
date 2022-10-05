@@ -4,8 +4,13 @@ import { Route, Routes } from "react-router-dom";
 import Customers from "./components/Customers";
 import Carriers from "./components/Carriers";
 import NewLoad from "./components/NewLoad";
+import { useState, useEffect } from "react";
+import LoginForm from "./components/LoginForm";
+import SignUpForm from "./components/SignUpForm";
+import Login from "./Login";
 
 function App() {
+  const [user, setUser] = useState(null);
   return (
     <>
       <NavBar />
@@ -21,6 +26,7 @@ function App() {
       <Routes>
         <Route path="/new_load" element={<NewLoad />} />
       </Routes>
+      <Login />
     </>
   );
 }
