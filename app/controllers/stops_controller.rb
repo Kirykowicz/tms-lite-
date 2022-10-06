@@ -11,7 +11,7 @@ class StopsController < ApplicationController
 
     def update 
         stop = Stop.find(params[:id])
-        stop.update load_params
+        stop.update stop_params
         render json: stop 
     end
 

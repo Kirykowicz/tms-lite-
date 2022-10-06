@@ -145,7 +145,7 @@ export default function IndividualLoad({
             type="number"
             placeholder="Rate"
             value={carrierRate}
-            onChange={(e) => setCarrierRate(e.target.value)}
+            onChange={(e) => setCustomerRate(e.target.value)}
           />
         </Form.Group>
 
