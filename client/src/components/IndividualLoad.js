@@ -20,7 +20,12 @@ export default function IndividualLoad({
   const [customerRate, setCustomerRate] = useState();
   const [carrierRate, setCarrierRate] = useState();
 
-  console.log(load);
+  const handleDelete = () => {
+    fetch(`/loads/${load.id}`, {
+      method: "DELETE",
+    });
+    setViewLoad(false);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -162,6 +167,7 @@ export default function IndividualLoad({
           Submit
         </Button>
       </Form>
+      <Button onClick={handleDelete}>DELETE THIS LOAD</Button>
     </>
   );
 }
