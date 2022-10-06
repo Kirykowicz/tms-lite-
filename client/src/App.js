@@ -43,8 +43,20 @@ function App() {
     });
   }, []);
   if (!user) return <Login onLogin={setUser} />;
+
+  // When clicking on an individula load # render this page
   if (viewLoad)
-    return <IndividualLoad setViewLoad={setViewLoad} load={loadToView} />;
+    return (
+      <IndividualLoad
+        setViewLoad={setViewLoad}
+        load={loadToView}
+        customers={customers}
+        carriers={carriers}
+        sites={sites}
+      />
+    );
+
+  // render the normal load board
   return (
     <>
       <NavBar user={user} setUser={setUser} />

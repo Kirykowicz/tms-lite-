@@ -4,33 +4,12 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
 export default function NewLoad({ customers, carriers, sites }) {
-  // const [customers, setCustomers] = useState([]);
-  // const [carriers, setCarriers] = useState([]);
-  // const [sites, setSites] = useState([]);
   const [customerId, setCustomerId] = useState();
   const [carrierId, setCarrierId] = useState();
   const [originId, setOriginId] = useState();
   const [destinationId, setDestinationId] = useState();
   const [customerRate, setCustomerRate] = useState();
   const [carrierRate, setCarrierRate] = useState();
-
-  // useEffect(() => {
-  //   fetch("/customers")
-  //     .then((res) => res.json())
-  //     .then((res) => {
-  //       setCustomers(res);
-  //     });
-  //   fetch("/carriers")
-  //     .then((res) => res.json())
-  //     .then((res) => {
-  //       setCarriers(res);
-  //     });
-  //   fetch("/sites")
-  //     .then((res) => res.json())
-  //     .then((res) => {
-  //       setSites(res);
-  //     });
-  // }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();

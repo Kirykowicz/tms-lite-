@@ -6,10 +6,29 @@ import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 
-export default function IndividualLoad({ setViewLoad, load }) {
+export default function IndividualLoad({
+  setViewLoad,
+  load,
+  customers,
+  carriers,
+  sites,
+}) {
+  const [customerId, setCustomerId] = useState();
+  const [carrierId, setCarrierId] = useState();
+  const [originId, setOriginId] = useState();
+  const [destinationId, setDestinationId] = useState();
+  const [customerRate, setCustomerRate] = useState();
+  const [carrierRate, setCarrierRate] = useState();
+
+  function handleSubmit() {}
   return (
     <>
-      <h1>Load Details / Edit Load Details</h1>
+      <h1>
+        Load Details / Edit Load Details
+        <span>
+          <Button onClick={() => setViewLoad(false)}>Back to Load Board</Button>
+        </span>
+      </h1>
       <p>
         {load.stops[0]
           ? `Pickup address: ${load.stops[0].address}`
@@ -20,21 +39,84 @@ export default function IndividualLoad({ setViewLoad, load }) {
           ? `Delivery address: ${load.stops[1].address}`
           : `Delivery address: ---`}
       </p>
-      <Form>
-        <Form.Group>
+      <Form onSubmit={handleSubmit}>
+        <Form.Group className="mb-3">
           <Form.Label>Customer</Form.Label>
-          <Form.Select>
-            <option>{load.customer_name}</option>
+          <Form.Select
+            aria-label="Default select example"
+            value={customerId}
+            onChange={(e) => setCustomerId(e.target.value)}
+          >
+            <option>Choose a Customer</option>
+            {customers.map((customer) => (
+              <option value={customer.id}>{customer.name}</option>
+            ))}
           </Form.Select>
         </Form.Group>
-        <Form.Group>
+
+        <Form.Group className="mb-3">
           <Form.Label>Carrier</Form.Label>
-          <Form.Select>
-            <option>{load.carrier_name}</option>
+          <Form.Select
+            aria-label="Default select example"
+            value={carrierId}
+            onChange={(e) => setCarrierId(e.target.value)}
+          >
+            <option>Choose a Carrier</option>
+
+            {carriers.map((carrier) => (
+              <option value={carrier.id}>{carrier.name}</option>
+            ))}
           </Form.Select>
+        </Form.Group>
+
+        <Form.Group className="mb-3">
+          <Form.Label>Origin</Form.Label>
+          <Form.Select
+            aria-label="Default select example"
+            value={originId}
+            onChange={(e) => setOriginId(e.target.value)}
+          >
+            <option>Choose Origin</option>
+            {sites.map((site) => (
+              <option value={site.id}>{site.name}</option>
+            ))}
+          </Form.Select>
+        </Form.Group>
+
+        <Form.Group className="mb-3">
+          <Form.Label>Destination</Form.Label>
+          <Form.Select
+            aria-label="Default select example"
+            value={destinationId}
+            onChange={(e) => setDestinationId(e.target.value)}
+          >
+            <option>Choose Destination</option>
+            {sites.map((site) => (
+              <option value={site.id}>{site.name}</option>
+            ))}
+          </Form.Select>
+        </Form.Group>
+
+        <Form.Group className="mb-3">
+          <Form.Label>Customer Rate</Form.Label>
+          <Form.Control
+            type="number"
+            placeholder="Rate"
+            value={carrierRate}
+            onChange={(e) => setCarrierRate(e.target.value)}
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3">
+          <Form.Label>Carier Rate</Form.Label>
+          <Form.Control
+            type="number"
+            placeholder="Rate"
+            value={carrierRate}
+            onChange={(e) => setCarrierRate(e.target.value)}
+          />
         </Form.Group>
       </Form>
-      <Button onClick={() => setViewLoad(false)}>Back</Button>
     </>
   );
 }
