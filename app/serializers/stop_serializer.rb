@@ -1,5 +1,5 @@
 class StopSerializer < ActiveModel::Serializer
-  attributes :id, :city, :state
+  attributes :id, :city, :state, :address, :name 
 
   def city 
     object.site.city 
@@ -7,5 +7,13 @@ class StopSerializer < ActiveModel::Serializer
 
   def state
     object.site.state 
+  end
+
+  def address 
+    object.site.address
+  end
+
+  def name 
+    object.site.name
   end
 end

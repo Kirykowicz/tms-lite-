@@ -1,7 +1,12 @@
-export default function LoadBoardItem({ load }) {
+export default function LoadBoardItem({ load, setViewLoad, setLoadNumber }) {
+  function handleClick() {
+    setViewLoad(true);
+    setLoadNumber(load.id);
+  }
+
   return (
     <tr>
-      <td>{load.id}</td>
+      <td onClick={handleClick}>{load.id}</td>
       <td>{load.customer_name}</td>
       <td>{load.carrier_name}</td>
       <td>{load.stops[0] ? load.stops[0].city : "-"}</td>
