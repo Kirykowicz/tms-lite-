@@ -20,7 +20,49 @@ export default function IndividualLoad({
   const [customerRate, setCustomerRate] = useState();
   const [carrierRate, setCarrierRate] = useState();
 
-  function handleSubmit() {}
+  console.log(load);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    let newLoad = {
+      customer_id: customerId,
+      carrier_id: carrierId,
+      revenue: customerRate,
+      cost: carrierRate,
+    };
+
+    fetch(`/loads/${load.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newLoad),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        fetch(`/stops/${load.stops[0].id}`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            load_id: res.id,
+            site_id: originId,
+          }),
+        });
+        fetch(`/stops/${load.stops[0].id}`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            load_id: res.id,
+            site_id: destinationId,
+          }),
+        });
+      });
+  };
   return (
     <>
       <h1>
@@ -116,6 +158,9 @@ export default function IndividualLoad({
             onChange={(e) => setCarrierRate(e.target.value)}
           />
         </Form.Group>
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
       </Form>
     </>
   );

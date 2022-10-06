@@ -9,6 +9,11 @@ class StopsController < ApplicationController
         render json: stop, status: :created 
     end
 
+    def update 
+        stop = Stop.find(params[:id])
+        stop.update load_params
+        render json: stop 
+    end
 
     private 
 

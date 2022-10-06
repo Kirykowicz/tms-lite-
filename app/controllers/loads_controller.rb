@@ -14,6 +14,12 @@ class LoadsController < ApplicationController
         render json: load, status: :created 
     end
 
+    def update 
+        load = Load.find(params[:id])
+        load.update load_params
+        render json: load 
+    end
+
     def destroy 
         load = Load.find params[:id]
         load.destroy
