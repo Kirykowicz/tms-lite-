@@ -8,7 +8,7 @@ import Table from "react-bootstrap/Table";
 import { useState, useEffect } from "react";
 import LoadBoardItem from "./LoadBoardItem";
 
-function LoadBoard({ setViewLoad, setLoadNumber }) {
+function LoadBoard({ setViewLoad, setLoad }) {
   const [loads, setLoads] = useState([]);
 
   useEffect(() => {
@@ -43,7 +43,7 @@ function LoadBoard({ setViewLoad, setLoadNumber }) {
                 <LoadBoardItem
                   load={load}
                   setViewLoad={setViewLoad}
-                  setLoadNumber={setLoadNumber}
+                  setLoad={setLoad}
                 />
               );
             })}

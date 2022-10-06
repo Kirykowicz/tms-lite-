@@ -1,7 +1,13 @@
-export default function LoadBoardItem({ load, setViewLoad, setLoadNumber }) {
+export default function LoadBoardItem({
+  load,
+  setViewLoad,
+  setLoad,
+  loadNumber,
+}) {
   function handleClick() {
+    setLoad(load);
     setViewLoad(true);
-    setLoadNumber(load.id);
+    console.log(typeof loadNumber);
   }
 
   return (

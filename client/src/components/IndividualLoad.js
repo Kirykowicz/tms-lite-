@@ -1,10 +1,32 @@
 import { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/esm/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Card from "react-bootstrap/Card";
+import Form from "react-bootstrap/Form";
 
-export default function IndividualLoad({ setViewLoad, LoadNumber }) {
+export default function IndividualLoad({ setViewLoad, load }) {
   return (
     <>
-      <Button onClick={() => setViewLoad(false)}>Back to main page</Button>
+      <h1>Load Details / Edit Load Details</h1>
+      {/* <p>Pickup address: {load.stops[0].address}</p>
+      <p>Delivery address: {load.stops[1].address}</p> */}
+      <Form>
+        <Form.Group>
+          <Form.Label>Customer</Form.Label>
+          <Form.Select>
+            <option>{load.customer_name}</option>
+          </Form.Select>
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Carrier</Form.Label>
+          <Form.Select>
+            <option>{load.carrier_name}</option>
+          </Form.Select>
+        </Form.Group>
+      </Form>
+      <Button onClick={() => setViewLoad(false)}>Back</Button>
     </>
   );
 }

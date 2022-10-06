@@ -11,7 +11,7 @@ import IndividualLoad from "./components/IndividualLoad";
 function App() {
   const [user, setUser] = useState(null);
   const [viewLoad, setViewLoad] = useState(false);
-  const [loadNumber, setLoadNumber] = useState(null);
+  const [loadToView, setLoad] = useState({});
 
   useEffect(() => {
     // auto-login
@@ -23,7 +23,7 @@ function App() {
   }, []);
   if (!user) return <Login onLogin={setUser} />;
   if (viewLoad)
-    return <IndividualLoad setViewLoad={setViewLoad} loadNumber={loadNumber} />;
+    return <IndividualLoad setViewLoad={setViewLoad} load={loadToView} />;
   return (
     <>
       <NavBar user={user} setUser={setUser} />
@@ -34,7 +34,8 @@ function App() {
           element={
             <LoadBoard
               setViewLoad={setViewLoad}
-              setLoadNumber={setLoadNumber}
+              load={loadToView}
+              setLoad={setLoad}
             />
           }
         />
