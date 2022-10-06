@@ -10,8 +10,16 @@ export default function IndividualLoad({ setViewLoad, load }) {
   return (
     <>
       <h1>Load Details / Edit Load Details</h1>
-      {/* <p>Pickup address: {load.stops[0].address}</p>
-      <p>Delivery address: {load.stops[1].address}</p> */}
+      <p>
+        {load.stops[0]
+          ? `Pickup address: ${load.stops[0].address}`
+          : `Pickup address: ---`}
+      </p>
+      <p>
+        {load.stops[1]
+          ? `Delivery address: ${load.stops[1].address}`
+          : `Delivery address: ---`}
+      </p>
       <Form>
         <Form.Group>
           <Form.Label>Customer</Form.Label>

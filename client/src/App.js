@@ -11,7 +11,28 @@ import IndividualLoad from "./components/IndividualLoad";
 function App() {
   const [user, setUser] = useState(null);
   const [viewLoad, setViewLoad] = useState(false);
-  const [loadToView, setLoad] = useState({});
+  const [loadToView, setLoadLoadToView] = useState({});
+  const [customers, setCustomers] = useState([]);
+  const [carriers, setCarriers] = useState([]);
+  const [sites, setSites] = useState([]);
+
+  useEffect(() => {
+    fetch("/customers")
+      .then((res) => res.json())
+      .then((res) => {
+        setCustomers(res);
+      });
+    fetch("/carriers")
+      .then((res) => res.json())
+      .then((res) => {
+        setCarriers(res);
+      });
+    fetch("/sites")
+      .then((res) => res.json())
+      .then((res) => {
+        setSites(res);
+      });
+  }, []);
 
   useEffect(() => {
     // auto-login
@@ -35,7 +56,7 @@ function App() {
             <LoadBoard
               setViewLoad={setViewLoad}
               load={loadToView}
-              setLoad={setLoad}
+              setLoad={setLoadLoadToView}
             />
           }
         />
@@ -47,7 +68,12 @@ function App() {
         <Route path="/carriers" element={<Carriers />} />
       </Routes>
       <Routes>
-        <Route path="/new_load" element={<NewLoad />} />
+        <Route
+          path="/new_load"
+          element={
+            <NewLoad customers={customers} carriers={carriers} sites={sites} />
+          }
+        />
       </Routes>
     </>
   );
